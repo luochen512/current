@@ -2,6 +2,8 @@
 from django.db import models
 from datetime import datetime, timedelta
 from utils import mwsdatetime
+from shop.models import Shop
+from django.utils.html import mark_safe
 
 
 class OrderListTask(models.Model):
@@ -30,6 +32,11 @@ class OrderListTask(models.Model):
         if now > working_date:
             return True
         return False
+
+    def vps_node(self):
+        shop = Shop.objects.get(sellerid=self.sellerid)
+        return mark_safe('<a href="http://%s:8080" target="_blank">View Node</a>' % shop.vps_ip)
+    vps_node.short_description = 'VPSNode'
 
     def is_throttling(self):
         now = datetime.utcnow() - timedelta(minutes=1)

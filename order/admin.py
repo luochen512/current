@@ -3,7 +3,7 @@ from django.contrib import admin
 from order.models import OrderListTask
 
 class OrderListTaskAdmin(admin.ModelAdmin):
-    list_display = ('shop_name', 'last_request_datetime', 'sellerid')
+    list_display = ('shop_name', 'last_request_datetime', 'sellerid', 'vps_node')
     fields = ('shop_name', 'start_work_datetime', 'sellerid')
     readonly_fields = ('shop_name', 'start_work_datetime', 'sellerid')
 

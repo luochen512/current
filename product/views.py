@@ -26,7 +26,6 @@ def lowest_priced_sku(request, sellerid):
         data['msg'] = u'LowestPricedSKU (%s) no sku !' % str(sellerid)
         return JsonResponse(data)
     tasklist = response.get('datas').get('sellerskuTaskList')
-    logger.info("========tasks: %s" % str(tasklist))
     for task in tasklist:
         process_task(shop, task)
     return JsonResponse(data)
@@ -57,7 +56,6 @@ def do_request_Get(sellerid, uri, data):
 
 
 def process_task(shop, task):
-    logger.info("task-----: %s" % (str(task)))
     params = {}
     params['Version'] = "2011-10-01"
     params['AWSAccessKeyId'] = shop.access_key
