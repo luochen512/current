@@ -1,3 +1,3 @@
 # sundix-mws
 
-python的mws接口程序
+mws服务
